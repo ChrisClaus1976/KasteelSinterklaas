@@ -1,0 +1,13 @@
+# ignore objects and archives, anywhere in the tree.
+*.[oa]
+vendor/
+_old/
+_oud/
+pages/ajax/_old/
+vendor/
+vendor_excel/
+vendor_office/
+vendor1/
+pdf/vendor/
+composer.json
+composer.lock
