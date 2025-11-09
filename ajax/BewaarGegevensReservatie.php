@@ -32,7 +32,7 @@
 	{
 	
 		//nieuwe gegevens opslaan
-		$query = "UPDATE TBL_Reservatie SET $veld='$waarde' WHERE ReservatieId='".$reservatieid."'";
+		$query = "UPDATE TBL_Reservatie SET $veld=\"$waarde\" WHERE ReservatieId='".$reservatieid."'";
 		//echo "$query<br>";
 		if (mysqli_query($link, $query))
 		{

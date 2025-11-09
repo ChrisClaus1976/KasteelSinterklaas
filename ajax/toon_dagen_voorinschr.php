@@ -13,8 +13,10 @@
 	{
 		while($row = mysqli_fetch_assoc($result))
 		{
-			$startdatum = $row['ReservatieStartdatum'];
-			$starttijd = $row['ReservatieStarttijd'];
+			$startdatum = $row['ReservatieLedenStartdatum'];
+			$starttijd = $row['ReservatieLedenStarttijd'];
+			$onholddatum = $row['ReservatieOnHoldDatum'];
+			$datumwandeling = $row['WandelingDatum'];
 		}
 	}
 	else
@@ -38,11 +40,11 @@
 	$dagen = Array("Zondag","Maandag","Dinsdag","Woensdag","Donderdag","Vrijdag","Zaterdag");
 	$maanden = Array("*", "januari", "februari", "maart", "april", "mei", "juni", "juli", "augustus", "september", "oktober", "november", "december");
 	$inschrijven = false;
-	$startdatum="2024-11-02";	
+
 	if ($datum < $startdatum)
 	{
 		//nog niet open
-		echo "<br><br><span style=\"color:red\">De reservaties staan nog niet open. Nog even geduld.<br>Binnenkort verschijnen de beschikbare data op deze pagina.</span><br>";
+		echo "<br><br><span style=\"color:red\">De reservaties voor leden staan nog niet open. Nog even geduld.<br>Binnenkort verschijnen de beschikbare data op deze pagina.</span><br>";
 		
 		echo "<div class=\"btn-box\"><a href=\"kalender.php\">Bekijk alvast de kalender</a></div>";
 	}

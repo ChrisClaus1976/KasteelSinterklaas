@@ -1,6 +1,9 @@
 <?php
 	include('includes/opmaak.php');
 	date_default_timezone_set('Europe/Brussels');
+	$datumvandaag=date('Y-m-d');
+	$datumquiz = '2025-11-14';
+	$datumwandeling = '29 november';
 	session_name("SinterklaasLG");
 	session_start();
 	if (isset($_SESSION['reservatie']['reservatieid'])  && isset($_SESSION['reservatie']['dataid']))
@@ -86,6 +89,31 @@
 								</div>
 							</div>
 						</div>
+						<?php
+						if ($datumvandaag <= $datumquiz)
+						{
+							?>
+								<div class="carousel-item ">
+									<div class="container">
+										<div class="row">
+											<div class="col-md-8">
+												<div class="detail-box">
+													<h1>Sinterklaas-quiz<br>
+											<span></span></h1>
+													<p>
+													  De Sint is benieuwd naar wie de slimste dorpsgenoten zijn.<br>Kom op 14 november mee quizen.
+													</p>
+													<div class="btn-box">
+														<a href="quiz.php" class="btn-2">Meer info</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							<?php
+						}
+						?>
 						<div class="carousel-item ">
 							<div class="container">
 								<div class="row">
@@ -94,7 +122,7 @@
 											<h1>Sinterklaaswandeling<br>
 											<span>Met tussenstop in het kasteel van de Sint</span></h1>
 											<p>
-											  Kom op 29 november naar de Sinterklaaswandeling en bezichtig het kasteel.<br>Inschrijven verplicht aan 'De Royer Brem' te Gruitrode (Harmonieweg 35, 3670 Oudsbergen).
+											  Kom op <?php echo $datumwandeling ?> naar de Sinterklaaswandeling en bezichtig het kasteel.<br>Inschrijven verplicht aan 'De Royer Brem' te Gruitrode (Harmonieweg 35, 3670 Oudsbergen).
 											</p>
 											<div class="btn-box">
 												<a href="wandeling.php" class="btn-2">Meer info</a>
@@ -108,10 +136,12 @@
 				</div>
 				<div class="container idicator_container">
 					<ol class="carousel-indicators">
-						<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+						<li data-target="#carouselExampleIndicators" data-slide-to="0""></li>
 						<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
 						<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-					</ol>
+						<li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+				</ol>
+				</div>
 			</section>
 			<!-- end slider section -->	
 		</div>
@@ -133,16 +163,31 @@
 							<div class="heading_container ">
 								<h2>Bezoek het kasteel van de Sint</h2>
 							</div>
-							<p>Bezoek de Sint op jouw manier!<br><br><ol><li><b>Privérondleiding met je gezin</b><br>Boek een rondleiding op een datum die voor jullie past en ontdek samen met de bewoners van het kasteel alle kamers.<br>Ideaal voor kinderen vanaf 3 jaar.</p>
+							<p>Bezoek de Sint op jouw manier!<br><br><ul><li><b>Privérondleiding met je gezin</b><br>Boek een rondleiding op een datum die voor jullie past en ontdek samen met de bewoners van het kasteel alle kamers.<br>Ideaal voor kinderen vanaf 3 jaar.</p>
 							<div class="btn-box">
 								<a href="reserveer.php">Boek privé rondleiding</a>
 							</div></li>
 							<br>
-							<li><p><b>Vrije doorloopmomenten:</b><br>Kom langs wanneer je wilt en verken het kasteel op je eigen tempo. Geen reservatie nodig!</p></li><br>
-							<p><li><b>Grote Sinterklaaswandeling op 30 november:</b><br>Doe mee aan deze speciale wandeling en ga op ontdekkingstocht in het kasteel.</p>
+							<li><p><b>Vrije doorloopmomenten:</b><br>Kom langs wanneer je wilt tijdens de vrije doorloopmomenten (zie kalender) en verken het kasteel op je eigen tempo. Geen reservatie nodig!</p>
+							<div class="btn-box">
+								<a href="kalender.php">Kalender</a>
+							</div>
+							</li><br>
+							<?php
+							if ($datumvandaag <= $datumquiz)
+							{
+								?>
+									<li><p><b>Sinterklaas-quiz</b><br>De Sint is benieuwd naar wie de slimste dorpsgenoten zijn.<br>Kom op 14 november mee quizen.</p>
+									<div class="btn-box">
+										<a href="quiz.php">Meer info</a>
+									</div></li><br>
+								<?php
+							}
+							?>
+							<p><li><b>Grote Sinterklaaswandeling op <?php echo $datumwandeling ?>:</b><br>Doe mee aan deze speciale wandeling en ga op ontdekkingstocht in het kasteel.</p>
 							<div class="btn-box">
 								<a href="wandeling.php">Meer info over de Sinterklaaswandeling</a>
-							</div></li></ol>
+							</div></li></ul>
 							
 						</div>
 					</div>

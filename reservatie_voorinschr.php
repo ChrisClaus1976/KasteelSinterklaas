@@ -158,12 +158,13 @@
 					document.getElementById('divKind3').hidden  = true;
 					document.getElementById('divKind4').hidden  = true;
 					document.getElementById('divKind5').hidden  = true;
+					document.getElementById('divKind6').hidden  = true;
 					kind1leeg();
 					kind2leeg();
 					kind3leeg();
 					kind4leeg();
 					kind5leeg();
-					
+					kind6leeg();
 				}
 				else
 				{
@@ -176,11 +177,12 @@
 						document.getElementById('divKind3').hidden  = true;
 						document.getElementById('divKind4').hidden  = true;
 						document.getElementById('divKind5').hidden  = true;
+						document.getElementById('divKind6').hidden  = true;
 						kind2leeg();
 						kind3leeg();
 						kind4leeg();
 						kind5leeg();
-						
+						kind6leeg();
 					}
 					else
 					{
@@ -192,9 +194,11 @@
 							document.getElementById('divKind3').hidden  = true;
 							document.getElementById('divKind4').hidden  = true;
 							document.getElementById('divKind5').hidden  = true;
+							document.getElementById('divKind6').hidden  = true;
 							kind3leeg();
 							kind4leeg();
 							kind5leeg();
+							kind6leeg();
 						}
 						else
 						{
@@ -206,8 +210,10 @@
 								document.getElementById('divKind3').hidden  = false;
 								document.getElementById('divKind4').hidden  = true;
 								document.getElementById('divKind5').hidden  = true;
+								document.getElementById('divKind6').hidden  = true;
 								kind4leeg();
 								kind5leeg();
+								kind6leeg();
 							}
 							else
 							{
@@ -219,7 +225,9 @@
 									document.getElementById('divKind3').hidden  = false;
 									document.getElementById('divKind4').hidden  = false;
 									document.getElementById('divKind5').hidden  = true;
+									document.getElementById('divKind6').hidden  = true;
 									kind5leeg();
+									kind6leeg();
 								}
 								else
 								{
@@ -231,6 +239,21 @@
 										document.getElementById('divKind3').hidden  = false;
 										document.getElementById('divKind4').hidden  = false;
 										document.getElementById('divKind5').hidden  = false;
+										document.getElementById('divKind6').hidden  = true;
+										kind6leeg();
+									}
+									else
+									{
+										if (aantalkind == 6)
+										{
+											//alert(aantalkind);
+											document.getElementById('divKind1').hidden  = false;
+											document.getElementById('divKind2').hidden  = false;
+											document.getElementById('divKind3').hidden  = false;
+											document.getElementById('divKind4').hidden  = false;
+											document.getElementById('divKind5').hidden  = false;
+											document.getElementById('divKind6').hidden  = false;
+										}
 									}
 								}
 							}
@@ -313,6 +336,20 @@
 				document.getElementById('txtKind5Beter').value = '';
 			}
 			
+			function kind6leeg()
+			{
+				sla_waarde_op('Kind6Naam','');
+				sla_waarde_op('Kind6Voornaam','');
+				sla_waarde_op('Kind6Leeftijd','');
+				sla_waarde_op('Kind6Goed','');
+				sla_waarde_op('Kind6Beter','');
+				document.getElementById('txtKind6Naam').value = '';
+				document.getElementById('txtKind6Voornaam').value = '';
+				document.getElementById('txtKind6Leeftijd').value = '';
+				document.getElementById('txtKind6Goed').value = '';
+				document.getElementById('txtKind6Beter').value = '';
+			}
+			
 			function TijdstipReserveren()
 			{
 				var errors = false;
@@ -348,6 +385,10 @@
 				document.getElementById('txtKind5Naam').style.backgroundColor = '';
 				document.getElementById('txtKind5Voornaam').style.backgroundColor = '';
 				document.getElementById('txtKind5Leeftijd').style.backgroundColor = '';
+				
+				document.getElementById('txtKind6Naam').style.backgroundColor = '';
+				document.getElementById('txtKind6Voornaam').style.backgroundColor = '';
+				document.getElementById('txtKind6Leeftijd').style.backgroundColor = '';
 				
 				
 				// elk verplicht veld controleren of het ingevuld is.
@@ -522,6 +563,26 @@
 					}
 					
 				}
+				
+				if (AantalKinderen >= 6)
+				{
+					if(document.getElementById('txtKind6Naam').value == '')
+					{
+						document.getElementById('txtKind6Naam').style.backgroundColor = 'red';
+						errors = true;
+					}
+					if(document.getElementById('txtKind6Voornaam').value == '')
+					{
+						document.getElementById('txtKind6Voornaam').style.backgroundColor = 'red';
+						errors = true;
+					}
+					if(document.getElementById('txtKind6Leeftijd').value == '')
+					{
+						document.getElementById('txtKind6Leeftijd').style.backgroundColor = 'red';
+						errors = true;
+					}
+					
+				}
 				if(errors) //controleren of er errors (velden niet ingevuld) waren
 				{
 					//alert("verplicht");
@@ -574,6 +635,12 @@
 						goedkind5 = encodeURIComponent(document.getElementById('txtKind5Goed').value);
 						beterkind5 = encodeURIComponent(document.getElementById('txtKind5Beter').value);
 						
+						naamkind6 = encodeURIComponent(document.getElementById('txtKind6Naam').value);
+						voornaamkind6 = encodeURIComponent(document.getElementById('txtKind6Voornaam').value);
+						leeftijdkind6 = encodeURIComponent(document.getElementById('txtKind6Leeftijd').value);
+						goedkind6 = encodeURIComponent(document.getElementById('txtKind6Goed').value);
+						beterkind6 = encodeURIComponent(document.getElementById('txtKind6Beter').value);
+						
 						xhttp.onreadystatechange = function() 
 						{
 							if (this.readyState == 4 && this.status == 200) 
@@ -591,7 +658,14 @@
 							}
 						};
 
-						xhttp.open("GET", "ajax/BewaarReservatie.php?naam=" + naam + "&voornaam=" + voornaam , true);
+						xhttp.open("GET", "ajax/BewaarReservatie.php?naam=" + naam + "&voornaam=" + voornaam + "&telefoon=" + telefoon + "&mailadres=" + mailadres + "&adres=" + adres + 
+						"&postcode=" + postcode + "&gemeente=" + gemeente + "&aantalvolwassenen=" + aantalvolwassenen +"&aantalkinderen=" + aantalkinderen + 
+						"&naamkind1=" + naamkind1 + "&voornaamkind1=" + voornaamkind1 + "&leeftijdkind1=" + leeftijdkind1 + "&goedkind1=" + goedkind1 + "&beterkind1=" + beterkind1 +
+						"&naamkind2=" + naamkind2 + "&voornaamkind2=" + voornaamkind2 + "&leeftijdkind2=" + leeftijdkind2 + "&goedkind2=" + goedkind2 + "&beterkind2=" + beterkind2 +
+						"&naamkind3=" + naamkind3 + "&voornaamkind3=" + voornaamkind3 + "&leeftijdkind3=" + leeftijdkind3 + "&goedkind3=" + goedkind3 + "&beterkind3=" + beterkind3 +
+						"&naamkind4=" + naamkind4 + "&voornaamkind4=" + voornaamkind4 + "&leeftijdkind4=" + leeftijdkind4 + "&goedkind4=" + goedkind4 + "&beterkind4=" + beterkind4 +
+						"&naamkind5=" + naamkind5 + "&voornaamkind5=" + voornaamkind5 + "&leeftijdkind5=" + leeftijdkind5 + "&goedkind5=" + goedkind5 + "&beterkind5=" + beterkind5 +
+						"&naamkind6=" + naamkind6 + "&voornaamkind6=" + voornaamkind6 + "&leeftijdkind6=" + leeftijdkind6 + "&goedkind6=" + goedkind6 + "&beterkind6=" + beterkind6 , true);
 						xhttp.send();
 						
 						
@@ -679,6 +753,11 @@
 											$Kind5Leeftijd=$row['Kind5Leeftijd'];
 											$Kind5Goed=$row['Kind5Goed'];
 											$Kind5Beter=$row['Kind5Beter'];
+											$Kind6Naam=$row['Kind6Naam'];
+											$Kind6Voornaam=$row['Kind6Voornaam'];
+											$Kind6Leeftijd=$row['Kind6Leeftijd'];
+											$Kind6Goed=$row['Kind6Goed'];
+											$Kind6Beter=$row['Kind6Beter'];
 											$VerklaringBetaling=$row['VerklaringBetaling'];
 											$KortingCode=$row['KortingCode'];
 										}
@@ -715,14 +794,14 @@
 									{
 										echo "<option value=\"Dorser\">Dorser</option>";
 									}
-									if ($Vereniging=='Kwibus')
+									/*if ($Vereniging=='Kwibus')
 									{
 										echo "<option value=\"Kwibus\" selected>Kwibus</option>";
 									}
 									else
 									{
 										echo "<option value=\"Kwibus\">Kwibus</option>";
-									}
+									}*/
 									echo "</select>";
 									echo "</td></tr>";
 									echo "<tr><td>Naam</td><td><input id=\"txtNaam\" value=\"".$Naam."\" size=\"40\" type=\"text\";\" onfocusout=\"sla_waarde_op('Naam', this.value);\" autofocus></td></tr>";
@@ -770,7 +849,7 @@
 									{
 										echo "<option value=\"\"></option>";
 									}
-									for ($x = 1; $x <= 5; $x++) 
+									for ($x = 1; $x <= 6; $x++) 
 									{
 										if ($x == $AantalKinderen)
 										{
@@ -785,6 +864,7 @@
 									
 									echo "Hiervoor krijgt elk kind een snoepzak.";
 									echo "</td></tr>";
+									echo "<tr><td colspan=2><i>\"De goede eigenschappen\" en \"Dingen die beter kunnen\" kunnen nadien nog aangevuld worden (je ontvangt hiervoor een bevestigingsmail).</i></td></tr>";
 									//kind1
 									echo "<tr><td colspan=2>";
 									echo "<div id=\"divKind1\">";
@@ -839,6 +919,17 @@
 									echo "<tr><td>Leeftijd</td><td><input id=\"txtKind5Leeftijd\" value=\"".$Kind5Leeftijd."\" size=\"2\" type=\"text\";\" onfocusout=\"sla_waarde_op('Kind5Leeftijd', this.value);\" > jaar</td></tr>";
 									echo "<tr><td>Goede eigenschappen</td><td><input id=\"txtKind5Goed\" value=\"".$Kind5Goed."\" size=\"40\" type=\"text\";\" onfocusout=\"sla_waarde_op('Kind5Goed', this.value);\" ></td></tr>";
 									echo "<tr><td>Dingen die beter kunnen</td><td><input id=\"txtKind5Beter\" value=\"".$Kind5Beter."\" size=\"40\" type=\"text\";\" onfocusout=\"sla_waarde_op('Kind5Beter', this.value);\" ></td></tr></table></div></td></tr>";
+									
+									//kind6
+									echo "<tr><td colspan=2>";
+									echo "<div id=\"divKind6\">";
+									
+									echo "<table><tr><td><b>Kind 6</b></td></tr>";
+									echo "<tr><td>Naam</td><td><input id=\"txtKind6Naam\" value=\"".$Kind6Naam."\" size=\"40\" type=\"text\";\" onfocusout=\"sla_waarde_op('Kind6Naam', this.value);\"></td></tr>";
+									echo "<tr><td>Voornaam</td><td><input id=\"txtKind6Voornaam\" value=\"".$Kind6Voornaam."\" size=\"40\" type=\"text\";\" onfocusout=\"sla_waarde_op('Kind6Voornaam', this.value);\" ></td></tr>";
+									echo "<tr><td>Leeftijd</td><td><input id=\"txtKind6Leeftijd\" value=\"".$Kind6Leeftijd."\" size=\"2\" type=\"text\";\" onfocusout=\"sla_waarde_op('Kind6Leeftijd', this.value);\" > jaar</td></tr>";
+									echo "<tr><td>Goede eigenschappen</td><td><input id=\"txtKind6Goed\" value=\"".$Kind6Goed."\" size=\"40\" type=\"text\";\" onfocusout=\"sla_waarde_op('Kind6Goed', this.value);\" ></td></tr>";
+									echo "<tr><td>Dingen die beter kunnen</td><td><input id=\"txtKind6Beter\" value=\"".$Kind6Beter."\" size=\"40\" type=\"text\";\" onfocusout=\"sla_waarde_op('Kind6Beter', this.value);\" ></td></tr></table></div></td></tr>";
 									
 									//prijs
 									echo "<tr><td><b>Prijs</b></td></tr>";

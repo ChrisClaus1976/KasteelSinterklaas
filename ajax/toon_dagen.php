@@ -42,7 +42,7 @@
 	$inschrijven = false;
 	if ($datum > $onholddatum) // inschrijvingen afgesloten
 	{
-		echo "Er zijn spijtig genoeg geen vrije momenten meer.<br><br>Kom regelmatig terug kijken of er terug vrije momenten zijn.<br><br>Je kunt zonder afspraak tijdens de vrije doorloopmomenten het kasteel bezoeken.<br><br>";
+		echo "Er zijn spijtig genoeg geen vrije momenten meer.<br><br>Je kunt zonder afspraak tijdens de vrije doorloopmomenten het kasteel bezoeken.<br><br>";
 		if ($datum < $datumwandeling)
 		{
 			echo "Je kunt de Sint nog bezoeken op 29 november tijdens de Sinterklaaswandeling. Meer info vind je <a href=\"http://kasteelvansinterklaasgruitrode.be/wandeling.php\">hier</a><br>";
@@ -107,7 +107,8 @@
 				}
 				else
 				{
-					echo "Er zijn spijtig genoeg geen vrije momenten meer.<br><br>Kom regelmatig terug kijken of er terug vrije momenten zijn.<br><br>Je kunt zonder afspraak tijdens de vrije doorloopmomenten het kasteel bezoeken.<br><br>";
+					//echo "<b>Er is bij sommige reservaties iets misgelopen bij het indienen. Wij hebben de gegevens die ingevuld zijn wel opgeslagen, maar de reservatie is niet doorgekomen. Momenteel worden deze bekeken en de betrokken reservaties krijgen in de loop van de week nog een bevestigingsmail van hun reservatie. Onze excuses voor het ongemak.</b><br><br>";
+					echo "<h3><b>Er zijn spijtig genoeg geen vrije momenten meer.</b></h3><br><br>Kom regelmatig terug kijken of er terug vrije momenten zijn.<br><br>Je kunt zonder afspraak tijdens de vrije doorloopmomenten het kasteel bezoeken.<br><br>";
 					if ($datum < $datumwandeling)
 					{
 						echo "Je kunt de Sint nog bezoeken op 29 november tijdens de Sinterklaaswandeling. Meer info vind je <a href=\"http://kasteelvansinterklaasgruitrode.be/wandeling.php\">hier</a><br>";

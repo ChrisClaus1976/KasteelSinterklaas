@@ -8,7 +8,7 @@
 	
 	include('../../includes/db_conn.php');
 	echo "<h3>Wachtlijst</h3>";
-	$query  = "SELECT * FROM TBL_Wachtlijst";
+	$query  = "SELECT * FROM TBL_Wachtlijst WHERE Deleted is null"; // ORDER BY Naam, Voornaam";
 	//echo "$query<br>";
 	$result = mysqli_query($link, $query);
 	$aantalrecords = mysqli_num_rows($result);
@@ -16,8 +16,11 @@
 	if ($aantalrecords>0)
 	{
 		$nr=0;
+		$aantkinderen = 0;
+		$aantvolw = 0;
 		?>
 		<table class="tblmetlijnenlinks"><tr>
+			<thead>
 			<th  class="tblmetlijnenlinks"  width=50 rowspan=2>Nr</th>
 			<th  class="tblmetlijnenlinks"  width=80 rowspan=2>Datum</th>
 			<th  class="tblmetlijnenlinks"  width=50 rowspan=2>Tijdstip</th>
@@ -29,8 +32,9 @@
 			<th  class="tblmetlijnenmidden" width=50  colspan=2>Aantal</th>
 			<th  class="tblmetlijnenmidden" width=400 colspan=14>Momenten</th></tr>
 			<tr>
-			<th  class="tblmetlijnenlinks" width=25  >Kind</th>
 			<th  class="tblmetlijnenlinks" width=25  >Volw</th>
+			<th  class="tblmetlijnenlinks" width=25  >Kind</th>
+			
 			<?php
 			
 			$query1  = "select * from TBL_WachtlijstMoment WHERE WachtlijstMomentInGebruik=1 ORDER BY WachtlijstOrder";
@@ -44,7 +48,7 @@
 
 			?>
 			</tr>
-			
+			</thead>
 		<?php
 		while($row = mysqli_fetch_assoc($result))
 		{
@@ -82,62 +86,77 @@
 			$Adres=$row['Adres'];
 			$Postcode=$row['Postcode'];
 			$Gemeente=$row['Gemeente'];
-			$nr++;
-							
-			echo "<tr><td class=\"tblmetlijnenlinks\">$nr</td><td class=\"tblmetlijnenlinks\">$Datum</td><td class=\"tblmetlijnenlinks\">$Tijd</td><td class=\"tblmetlijnenlinks\">$Naam</td><td class=\"tblmetlijnenlinks\">$Voornaam</td><td class=\"tblmetlijnenlinks\">$Telefoon</td><td class=\"tblmetlijnenlinks\">$Mailadres</td><td class=\"tblmetlijnenlinks\">$Adres $Postcode $Gemeente</td>";
-			echo "<td class=\"tblmetlijnenrechts\">$aantalkinderen</td>";
-			echo "<td class=\"tblmetlijnenrechts\">$aantalvolwassenen</td>";
-			echo "<td class=\"tblmetlijnenmidden\">".toon_moment($Moment1)."</td>";
-			echo "<td class=\"tblmetlijnenmidden\">".toon_moment($Moment2)."</td>";
-			echo "<td class=\"tblmetlijnenmidden\">".toon_moment($Moment3)."</td>";
-			echo "<td class=\"tblmetlijnenmidden\">".toon_moment($Moment4)."</td>";
-			echo "<td class=\"tblmetlijnenmidden\">".toon_moment($Moment5)."</td>";
-			echo "<td class=\"tblmetlijnenmidden\">".toon_moment($Moment6)."</td>";
-			echo "<td class=\"tblmetlijnenmidden\">".toon_moment($Moment7)."</td>";
-			echo "<td class=\"tblmetlijnenmidden\">".toon_moment($Moment8)."</td>";
-			echo "<td class=\"tblmetlijnenmidden\">".toon_moment($Moment9)."</td>";
-			echo "<td class=\"tblmetlijnenmidden\">".toon_moment($Moment10)."</td>";
-			echo "<td class=\"tblmetlijnenmidden\">".toon_moment($Moment11)."</td>";
-			echo "<td class=\"tblmetlijnenmidden\">".toon_moment($Moment12)."</td>";
-			echo "<td class=\"tblmetlijnenmidden\">".toon_moment($Moment13)."</td>";
-			echo "<td class=\"tblmetlijnenmidden\">".toon_moment($Moment14)."</td>";
 			
-			echo "<td>";
-			$divnaam = "divWachtlijst".$WachtlijstId;
-			if ($aantalrecords1>0)
+							
+			if ($aantalrecords1==0)
 			{
-				$aantal_res++;
-				while($row1 = mysqli_fetch_assoc($result1))
-				{
-					$Tel=strtolower($row1['Telefoon']);
-					$Mail=strtolower($row1['Mailadres']);
-				}
-				echo "reservatie";
-				/*if ($Mail==$Mailadres)
-				{
-					echo " Mail ";
-				}
-				if ($Tel==$Telefoon)
-				{
-					echo " Tel ";
-				}*/
+				$nr++;
+				$aantkinderen = $aantkinderen + $aantalkinderen;
+				$aantvolw = $aantvolw + $aantalvolwassenen;
+				echo "<tr><td class=\"tblmetlijnenlinks\">$nr</td><td class=\"tblmetlijnenlinks\">$Datum</td><td class=\"tblmetlijnenlinks\">$Tijd</td><td class=\"tblmetlijnenlinks\">$Naam</td><td class=\"tblmetlijnenlinks\">$Voornaam</td><td class=\"tblmetlijnenlinks\">$Telefoon</td><td class=\"tblmetlijnenlinks\">$Mailadres</td><td class=\"tblmetlijnenlinks\">$Adres $Postcode $Gemeente</td>";
+				echo "<td class=\"tblmetlijnenrechts\">$aantalvolwassenen</td>";
+				echo "<td class=\"tblmetlijnenrechts\">$aantalkinderen</td>";
+				
+				
+				echo "<td class=\"tblmetlijnenmidden\">".toon_moment($Moment1)."</td>";
+				echo "<td class=\"tblmetlijnenmidden\">".toon_moment($Moment2)."</td>";
 
 				
-			}
-			else
-			{	
-				echo "<input type=\"button\" onclick=\"wachtlijstnaarreservatielijst('$WachtlijstId', '$divnaam')\" value=\"Reservatie maken\">";
-			}
-			/*if ($Mail2511==1)
-			{
-				echo "Mail ivm 25/11";
-			}*/
-			echo "</td>";
-			echo "</tr>";
+				echo "<td class=\"tblmetlijnenmidden\">".toon_moment($Moment3)."</td>";
+				echo "<td class=\"tblmetlijnenmidden\">".toon_moment($Moment4)."</td>";
+
+				
+				echo "<td class=\"tblmetlijnenmidden\">".toon_moment($Moment5)."</td>";
+				echo "<td class=\"tblmetlijnenmidden\">".toon_moment($Moment6)."</td>";
+				echo "<td class=\"tblmetlijnenmidden\">".toon_moment($Moment7)."</td>";
+				echo "<td class=\"tblmetlijnenmidden\">".toon_moment($Moment8)."</td>";
+				echo "<td class=\"tblmetlijnenmidden\">".toon_moment($Moment9)."</td>";
+				echo "<td class=\"tblmetlijnenmidden\">".toon_moment($Moment10)."</td>";
+				echo "<td class=\"tblmetlijnenmidden\">".toon_moment($Moment11)."</td>";
+				echo "<td class=\"tblmetlijnenmidden\">".toon_moment($Moment12)."</td>";
+				echo "<td class=\"tblmetlijnenmidden\">".toon_moment($Moment13)."</td>";
+				echo "<td class=\"tblmetlijnenmidden\">".toon_moment($Moment14)."</td>";
 			
-			echo "<tr><td colspan=24><div id=\"$divnaam\" hidden>test</div></td></tr>";
+				echo "<td>";
+				$divnaam = "divWachtlijst".$WachtlijstId;
+				if ($aantalrecords1>0)
+				{
+					$aantal_res++;
+					while($row1 = mysqli_fetch_assoc($result1))
+					{
+						$ReservatieId = $row1['ReservatieId'];
+						$Tel=strtolower($row1['Telefoon']);
+						$Mail=strtolower($row1['Mailadres']);
+					}
+					echo "reservatie ($ReservatieId)";
+					/*if ($Mail==$Mailadres)
+					{
+						echo " Mail ";
+					}
+					if ($Tel==$Telefoon)
+					{
+						echo " Tel ";
+					}*/
+
+					
+				}
+				else
+				{	
+					echo "<input type=\"button\" onclick=\"wachtlijstnaarreservatielijst('$WachtlijstId', '$divnaam')\" value=\"Reservatie maken\">";
+				}
+				/*if ($Mail2511==1)
+				{
+					echo "Mail ivm 25/11";
+				}*/
+				echo "</td>";
+				echo "</tr>";
+				
+				echo "<tr><td colspan=24><div id=\"$divnaam\" hidden>test</div></td></tr>";
+			}
 		}
-		
+		echo "<tr><td class=\"tblzonderlijnenlinks\"></td><td class=\"tblzonderlijnenlinks\"></td><td class=\"tblzonderlijnenlinks\"></td><td class=\"tblzonderlijnenlinks\"></td>";
+		echo "<td class=\"tblzonderlijnenlinks\"></td><td class=\"tblzonderlijnenlinks\"></td><td class=\"tblzonderlijnenlinks\"></td><td class=\"tblzonderlijnenlinks\"></td>";
+		echo "<td class=\"tblmetlijnenrechts\">$aantvolw</td><td class=\"tblmetlijnenrechts\">$aantkinderen</td></tr>";
 		echo "</table><br><br>";
 		
 		echo "Aantal waarvoor er een reservatie gedaan is: $aantal_res<br><br>";

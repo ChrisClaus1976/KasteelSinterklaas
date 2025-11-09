@@ -55,28 +55,32 @@
 			
 			function wachtlijstnaarreservatie(wachtlijstid, data_id)
 			{
-				//alert(wachtlijstid + " - " + data_id);
-				//document.getElementById("divReservatiesMelding").innerHTML = wachtlijstid + " - " + data_id;
-			
-				var xhttp = new XMLHttpRequest();
-				xhttp.onreadystatechange = function() 
+				antw=confirm('Wilt u dit tijdstip toekennen aan dit gezin (er wordt een mail verzonden)?');
+				if(antw)
 				{
-					if (this.readyState == 4 && this.status == 200) 
+					//alert(wachtlijstid + " - " + data_id);
+					//document.getElementById("divReservatiesMelding").innerHTML = wachtlijstid + " - " + data_id;
+			
+					var xhttp = new XMLHttpRequest();
+					xhttp.onreadystatechange = function() 
 					{
-						if (xhttp.responseText==0)
+						if (this.readyState == 4 && this.status == 200) 
 						{
-							alert("Reservatie is gemaakt");
-							location.reload();
+							if (xhttp.responseText==0)
+							{
+								alert("Reservatie is gemaakt");
+								location.reload();
+							}
+							else
+							{
+								document.getElementById("divReservatiesMelding").innerHTML = xhttp.responseText;
+							}
 						}
-						else
-						{
-							document.getElementById("divReservatiesMelding").innerHTML = xhttp.responseText;
-						}
-					}
-				};
+					};
 
-				xhttp.open("GET", "ajax/wachtlijst_naar_reservatie.php?wachtlijstid=" + wachtlijstid + "&dataid=" + data_id, true);
-				xhttp.send();
+					xhttp.open("GET", "ajax/wachtlijst_naar_reservatie.php?wachtlijstid=" + wachtlijstid + "&dataid=" + data_id, true);
+					xhttp.send();
+				}
 			}
 			
 		</script>

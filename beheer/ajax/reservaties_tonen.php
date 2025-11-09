@@ -54,7 +54,7 @@
 				<th  class="tblmetlijnenrechts" width=75>Volwassenen</th>
 				<th  class="tblmetlijnenrechts" width=75>Kinderen</th>
 				<th  class="tblmetlijnenlinks" width=150>Betaald</th>
-				
+				<!--<th  class="tblmetlijnenlinks" width=150>Status</th>-->
 			<?php
 			$nr=0;
 			$aantalkinderen=0;
@@ -152,7 +152,8 @@
 				}
 				echo "</tr>";
 			}
-			echo "<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class=\"tblmetlijnenrechts\">$aantalvolwassenen</td><td class=\"tblmetlijnenrechts\">$aantalkinderen</td><td></td></tr>";
+			echo "<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class=\"tblmetlijnenrechts\"><b>$aantalvolwassenen</b></td><td class=\"tblmetlijnenrechts\"><b>$aantalkinderen</b></td><td></td></tr>";
+			echo "<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class=\"tblmetlijnenrechts\">Volwassenen</td><td class=\"tblmetlijnenrechts\">Kinderen</td><td></td></tr>";
 			echo "</table><br>";
 			echo "Aantal gereserveerde sloten: $aantalgereserveerdesloten<br>";
 			echo "Aantal vrije sloten: $aantalvrijesloten<br>";

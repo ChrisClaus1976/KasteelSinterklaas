@@ -639,6 +639,7 @@
 						{
 							if (this.readyState == 4 && this.status == 200) 
 							{
+								
 								if (xhttp.responseText=="1")
 								{
 									//alles OK
@@ -652,7 +653,14 @@
 							}
 						};
 
-						xhttp.open("GET", "ajax/BewaarReservatie.php?naam=" + naam + "&voornaam=" + voornaam , true); // alle velden toevoegen
+						xhttp.open("GET", "ajax/BewaarReservatie.php?naam=" + naam + "&voornaam=" + voornaam + "&telefoon=" + telefoon + "&mailadres=" + mailadres + "&adres=" + adres + 
+						"&postcode=" + postcode + "&gemeente=" + gemeente + "&aantalvolwassenen=" + aantalvolwassenen +"&aantalkinderen=" + aantalkinderen + 
+						"&naamkind1=" + naamkind1 + "&voornaamkind1=" + voornaamkind1 + "&leeftijdkind1=" + leeftijdkind1 + "&goedkind1=" + goedkind1 + "&beterkind1=" + beterkind1 +
+						"&naamkind2=" + naamkind2 + "&voornaamkind2=" + voornaamkind2 + "&leeftijdkind2=" + leeftijdkind2 + "&goedkind2=" + goedkind2 + "&beterkind2=" + beterkind2 +
+						"&naamkind3=" + naamkind3 + "&voornaamkind3=" + voornaamkind3 + "&leeftijdkind3=" + leeftijdkind3 + "&goedkind3=" + goedkind3 + "&beterkind3=" + beterkind3 +
+						"&naamkind4=" + naamkind4 + "&voornaamkind4=" + voornaamkind4 + "&leeftijdkind4=" + leeftijdkind4 + "&goedkind4=" + goedkind4 + "&beterkind4=" + beterkind4 +
+						"&naamkind5=" + naamkind5 + "&voornaamkind5=" + voornaamkind5 + "&leeftijdkind5=" + leeftijdkind5 + "&goedkind5=" + goedkind5 + "&beterkind5=" + beterkind5 +
+						"&naamkind6=" + naamkind6 + "&voornaamkind6=" + voornaamkind6 + "&leeftijdkind6=" + leeftijdkind6 + "&goedkind6=" + goedkind6 + "&beterkind6=" + beterkind6 , true); // alle velden toevoegen
 						xhttp.send();
 						
 						
@@ -813,6 +821,7 @@
 									
 									echo "Hiervoor krijgt elk kind een snoepzak.";
 									echo "</td></tr>";
+									echo "<tr><td colspan=2><i>\"De goede eigenschappen\" en \"Dingen die beter kunnen\" kunnen nadien nog aangevuld worden (je ontvangt hiervoor een bevestigingsmail).</i></td></tr>";
 									//kind1
 									echo "<tr><td colspan=2>";
 									echo "<div id=\"divKind1\">";
@@ -873,11 +882,11 @@
 									echo "<div id=\"divKind6\">";
 									
 									echo "<table><tr><td><b>Kind 6</b></td></tr>";
-									echo "<tr><td>Naam</td><td><input id=\"txtKind6Naam\" value=\"".$Kind6Naam."\" size=\"40\" type=\"text\";\" onfocusout=\"sla_waarde_op('Kind5Naam', this.value);\"></td></tr>";
-									echo "<tr><td>Voornaam</td><td><input id=\"txtKind6Voornaam\" value=\"".$Kind6Voornaam."\" size=\"40\" type=\"text\";\" onfocusout=\"sla_waarde_op('Kind5Voornaam', this.value);\" ></td></tr>";
-									echo "<tr><td>Leeftijd</td><td><input id=\"txtKind6Leeftijd\" value=\"".$Kind6Leeftijd."\" size=\"2\" type=\"text\";\" onfocusout=\"sla_waarde_op('Kind5Leeftijd', this.value);\" > jaar</td></tr>";
-									echo "<tr><td>Goede eigenschappen</td><td><input id=\"txtKind6Goed\" value=\"".$Kind6Goed."\" size=\"40\" type=\"text\";\" onfocusout=\"sla_waarde_op('Kind5Goed', this.value);\" ></td></tr>";
-									echo "<tr><td>Dingen die beter kunnen</td><td><input id=\"txtKind6Beter\" value=\"".$Kind6Beter."\" size=\"40\" type=\"text\";\" onfocusout=\"sla_waarde_op('Kind5Beter', this.value);\" ></td></tr></table></div></td></tr>";
+									echo "<tr><td>Naam</td><td><input id=\"txtKind6Naam\" value=\"".$Kind6Naam."\" size=\"40\" type=\"text\";\" onfocusout=\"sla_waarde_op('Kind6Naam', this.value);\"></td></tr>";
+									echo "<tr><td>Voornaam</td><td><input id=\"txtKind6Voornaam\" value=\"".$Kind6Voornaam."\" size=\"40\" type=\"text\";\" onfocusout=\"sla_waarde_op('Kind6Voornaam', this.value);\" ></td></tr>";
+									echo "<tr><td>Leeftijd</td><td><input id=\"txtKind6Leeftijd\" value=\"".$Kind6Leeftijd."\" size=\"2\" type=\"text\";\" onfocusout=\"sla_waarde_op('Kind6Leeftijd', this.value);\" > jaar</td></tr>";
+									echo "<tr><td>Goede eigenschappen</td><td><input id=\"txtKind6Goed\" value=\"".$Kind6Goed."\" size=\"40\" type=\"text\";\" onfocusout=\"sla_waarde_op('Kind6Goed', this.value);\" ></td></tr>";
+									echo "<tr><td>Dingen die beter kunnen</td><td><input id=\"txtKind6Beter\" value=\"".$Kind6Beter."\" size=\"40\" type=\"text\";\" onfocusout=\"sla_waarde_op('Kind6Beter', this.value);\" ></td></tr></table></div></td></tr>";
 									
 									//prijs
 									echo "<tr><td><b>Prijs</b></td></tr>";

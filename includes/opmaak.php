@@ -76,6 +76,17 @@
 									echo "<a class=\"nav-link\" href=\"winterbar.php\">Sinterklaasbar</a>";
 									echo "</li>";
 									
+									if ($pagina=='quiz')
+									{
+										echo "<li class=\"nav-item active\">";
+									}
+									else
+									{
+										echo "<li class=\"nav-item\">";
+									}
+									echo "<a class=\"nav-link\" href=\"quiz.php\">Sinterklaas-quiz</a>";
+									echo "</li>";
+									
 									if ($pagina=='wandeling')
 									{
 										echo "<li class=\"nav-item active\">";
@@ -189,7 +200,13 @@
 								echo "<img src=\"sponsor/kerkhofs.png\" alt=\"\" height=75px />";
 							echo "</div>";
 							echo "<div class=\"info_text\">";
+								echo "<img src=\"sponsor/HendrikxStallenbouw.png\" alt=\"\" height=75px />";
+							echo "</div>";
+							echo "<div class=\"info_text\">";
 								echo "<img src=\"sponsor/selfiestation.png\" alt=\"\" height=75px />";
+							echo "</div>";
+							echo "<div class=\"info_text\">";
+								echo "<img src=\"sponsor/vanreusel.png\" alt=\"\" height=75px />";
 							echo "</div>";
 						echo "</div>";
 					echo "</div>";

@@ -12,7 +12,7 @@
 		cancelreservatie($currentPage);
 	}
 	//$_SESSION=array();
-	header('Location: index.php'); // naar startpagina verwijzen.
+	//header('Location: index.php'); // naar startpagina verwijzen.
 	?>
 	<html>
 	<head>
@@ -172,8 +172,8 @@
 									echo "";
 									//echo "<h2>Omwille van de grote drukte duurt het langer dan normaal voordat u de bevestigingsmail ontvangt. Onze excuses hier voor.</h2>";
 									echo "<div id=\"divkalender\"></div>";
-									//echo "<script>toon_maand1()</script>"; // met wachtlijst
-									echo "<script>toon_maand2()</script>"; // met contactlijst
+									echo "<script>toon_maand1()</script>"; // met wachtlijst
+									//echo "<script>toon_maand2()</script>"; // met contactlijst
 									
 									echo "</div>";
 									

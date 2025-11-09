@@ -47,7 +47,7 @@
 								<p>
 								<table style="width:100%">
 								<tr><td colspan=4><b>Vrijdag 14 november</b></td></tr>
-								<tr><td style="width:5%"></td><td style="width:5%"><i class="bi bi-moon-fill" style="color: #FFD43B;"></i></td><td style="width:15%">19:00 - </td><td>Winterbar open - <i>Fun quiz</i></td></tr>
+								<tr><td style="width:5%"></td><td style="width:5%"><i class="bi bi-moon-fill" style="color: #FFD43B;"></i></td><td style="width:15%">19:30 - </td><td>Winterbar open - <i>Fun quiz</i></td></tr>
 								<tr><td colspan=4><b>Zaterdag 15 november</b></td></tr>
 								<tr><td style="width:5%"></td><td style="width:5%"><i class="bi bi-sun-fill" style="color: #FFD43B;"></i></td><td style="width:15%">10:00 - 16:00</td><td>Privé rondleidingen, reservatie is verplicht - Winterbar open</td></tr>
 								<tr><td style="width:5%"></td><td style="width:5%"><i class="bi bi-sunset-fill" style="color: #ff9f00;"></i></td><td style="width:15%">17:00 - 19:00</td><td>Vrij doorloopmoment - Winterbar open</td></tr>
@@ -73,7 +73,7 @@
 								
 								<table style="width:100%">
 								<tr><td colspan=4><b>Vrijdag 28 november</b></td></tr>
-								<tr><td style="width:5%"></td><td style="width:5%"><i class="bi bi-moon-fill" style="color: #FFD43B;"></i></td><td style="width:15%">19:00 - </td><td>Winterbar open - <i>Live muziek / winterbeats</i></td></tr>
+								<tr><td style="width:5%"></td><td style="width:5%"><i class="bi bi-moon-fill" style="color: #FFD43B;"></i></td><td style="width:15%">19:00 - </td><td>Winterbar open - <i>Pieten karaoke</i></td></tr>
 								<tr><td colspan=4><b>Zaterdag 29 november</b></td></tr>
 								<tr><td style="width:5%"></td><td style="width:5%"><i class="bi bi-sun-fill" style="color: #FFD43B;"></i></td><td style="width:15%">12:00 - 16:00</td><td>Sinterklaaswandeling - Winterbar open</td></tr>
 								<tr><td style="width:5%"></td><td style="width:5%"><i class="bi bi-moon-fill" style="color: #FFD43B;"></i></td><td style="width:15%">19:00 - </td><td>Winterbar open - <i>Comedy: open mic</i></td></tr>

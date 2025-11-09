@@ -12,7 +12,7 @@
 	
 		include('../../includes/db_conn.php');
 		
-		$query  = "SELECT * FROM TBL_data WHERE ReservatieId = 0 OR ReservatieId is null";
+		$query  = "SELECT * FROM TBL_data WHERE ReservatieId = 0 OR ReservatieId is null ORDER BY Datum, Tijdstip";
 		//echo "$query<br>";
 		$result = mysqli_query($link, $query);
 		$aantalrecords = mysqli_num_rows($result);
